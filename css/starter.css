@@ -196,21 +196,52 @@ footer {
 /* === MEDIA QUERIES === */
 
 /*for screens larger than 900px */
-@media (min-width: 900px) {
-    /* Keep header fixed at the top */
-    header {
-        position: fixed;
-        top: 0;
-        width: 100%;
-        background: white;
-        z-index: 1000;
-    }
-
-    /* Adjust card sizes for larger screens */
-    .card {
-        flex: 1 1 275px;
-    }
+@@media (min-width: 900px) {
+  header {
+      display: flex;
+      justify-content: space-between; /* Pushes logo left, nav right */
+      align-items: center;
+      padding: 10px 50px; /* Add padding for better spacing */
+      position: fixed; /* Keeps header at the top */
+      top: 0;
+      width: 100%;
+      background-color: #ffffff; /* White background */
+      border-bottom: 3px solid #50C7C7; /* Cyan border at the bottom */
+      z-index: 1000;
+  }
+  nav {
+    background-color: #ffffff; /* White background */
+    border-bottom: 3px solid #50C7C7; /* Cyan border at the bottom */
+    padding: 10px 0; /* Add some vertical spacing */
 }
+  .nav_links {
+      margin-left: auto; /* Push navigation links to the right */
+      display: flex;
+      gap: 30px; /* Increase space between nav links */
+  }
+
+  main {
+      margin-top: 80px; /* Prevent content from hiding under fixed header */
+  }
+}
+@media (min-width: 900px) {
+  .pricing {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      align-items: stretch; /* Allows cards to adjust their height */
+  }
+
+  .card {
+      flex: 1 1 275px; /* Ensures uniform width but different heights */
+      max-width: 275px; /* Prevents cards from getting too large */
+  }
+
+  .card h3 {
+      font-size: 3em; /* Reduce price font size so it doesn’t cut off */
+  }
+}
+
 
 /* Accessibility: Disable animation when reduced motion is preferred */
 @media (prefers-reduced-motion: reduce) {
