@@ -1,32 +1,56 @@
-body{
+/* Import Poppins font from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+/* Apply general styles to the body */
+body {
+    font-family: 'Poppins', serif;
+    background: url('../images/concrete_seamless.png'), #f1f1f1;
     margin: 0;
     padding: 0;
-    font-size: 16pt; /* test for this! Make all sizes em or rem */
-  }
-  
-  header{
-    background: #fff;
-    border-bottom: 3px solid #50C7C7;
-    margin-bottom:20px
-  }
-  
-  h1{
+    font-size: 16pt; /* Ensure font size is responsive */
+}
+
+/* === HEADER & NAVIGATION === */
+
+/* Flexbox to align logo and navigation */
+header {
+    display: flex;
+    justify-content: space-between; /* Logo on the left, navigation on the right */
+    align-items: center;
+    padding: 10px;
+}
+
+/* Navigation links should be displayed in a row with space between them */
+.nav_links {
+    display: flex;
+    gap: 15px; /* Add spacing between navigation items */
+}
+
+/* === TYPOGRAPHY & TEXT STYLES === */
+
+/* Style for main heading */
+h1 {
     font-size: 2em;
     text-align: center;
-    line-height: 2;
-  }
-  
-  h2{
+    line-height: 2; 
+}
+
+/* Style for secondary headings */
+h2 {
     font-size: 1.5em;
     text-align: center;
     padding: 5px;
-  }
-  
-  p {
-    padding: 0 30px;
-  }
-  
-  a.skip{
+}
+
+/* Paragraph styling */
+p {
+    padding: 0 30px; /* Left and right padding */
+}
+
+/* === SKIP TO CONTENT LINK (ACCESSIBILITY) === */
+
+/* Hidden skip link, only show when focused */
+a.skip {
     background: white;
     left: 0;
     padding: 6px;
@@ -35,75 +59,183 @@ body{
     -webkit-transition: top 1s ease-out;
     transition: top 1s ease-out;
     z-index: 1;
-  }
-  
-  a.skip:focus{
-    top:20px;
+}
+
+/* Skip link appears when focused */
+a.skip:focus {
+    top: 20px;
     color: black;
     text-decoration-style: solid;
-  }
-  
-  *:focus{
+}
+
+/* Add a focus outline for accessibility */
+*:focus {
     border: 2px solid black;
-  }
+}
 
+/* === NAVIGATION LINKS === */
 
-  .nav_item a{
+/* Add padding to navigation links */
+.nav_item a {
     padding: 10px;
-  }
-  
-  .nav_item a:hover, a:focus{
+}
+
+/* Hover and focus effects for navigation links */
+.nav_item a:hover, a:focus {
     color: #50C7C7;
     text-decoration: underline;
     -webkit-text-decoration-style: dotted;
-            text-decoration-style: dotted;
-  }
+    text-decoration-style: dotted; /* Use dotted underline for effect */
+}
 
-  .pricing{
-    min-height: 475px;
-  }
+/* === PRICING SECTION === */
 
-  .card {
-    margin: 12px;
-    background: #fff;
-    border-radius: 7px;
-    padding: 0 0 25px 0;
-  
-  }
+/* Center the pricing section and allow wrapping */
+.pricing {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
 
-  .card > ul{
+/* Card layout using flexbox */
+.card {
+    flex: 1 1 450px; /* Default width of 450px */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center content inside the card */
+    padding: 20px;
+}
+
+/* Remove list styles inside cards */
+.card > ul {
     list-style: none;
     padding-left: 5px;
-  }
-  
-  .card > ul li {
+}
+
+/* Style individual list items inside cards */
+.card > ul li {
     width: 90%;
     margin: 20px auto;
-    
-  }
+}
 
-.card button{
+/* Style buttons inside the cards */
+.card button {
     width: 90%;
     height: 40px;
     border: 0;
     margin-left: 5%;
     border-radius: 7px;
-    background: #288080;
+    background: #288080; /* Dark teal color */
     color: white;
     font-size: 1em;
-  }
-  
-  .card h3{
+}
+
+/* Style headers inside the cards */
+.card > header {
+    background: #288088; /* Slightly lighter teal */
+    border: solid 2px #45ADAD; /* Border for card headers */
+    padding: 20px;
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px; /* Rounded corners */
+}
+
+/* Large pricing numbers */
+.card h3 {
     font-size: 4em;
     color: white;
     text-align: center;
-  }
-  
-  footer{
+}
+
+/* === FOOTER STYLES === */
+
+/* Style footer with dark background */
+footer {
     background-color: black;
     color: white;
     padding: 30px;
     text-align: center;
-  }
+}
 
-  
+/* === ANIMATION SECTION === */
+
+/* Logo animation: grows from 25px to 475px */
+@keyframes growLogo {
+    from {
+        width: 25px;
+        opacity: 0; /* Start fully transparent */
+    }
+    to {
+        width: 475px;
+        opacity: 1; /* Fully visible */
+    }
+}
+
+/* Apply animation to the logo */
+#logo {
+    animation: growLogo 5s ease-in-out;
+}
+
+/* === GALLERY STYLES === */
+
+/* Style gallery images with a border */
+.gallery img {
+    border: solid 10px #50C7C7;
+    margin: 10px;
+    width: 300px;
+}
+
+/* Use flexbox to arrange gallery images */
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+/* === MEDIA QUERIES === */
+
+/*for screens larger than 900px */
+@media (min-width: 900px) {
+    /* Keep header fixed at the top */
+    header {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background: white;
+        z-index: 1000;
+    }
+
+    /* Adjust card sizes for larger screens */
+    .card {
+        flex: 1 1 275px;
+    }
+}
+
+/* Accessibility: Disable animation when reduced motion is preferred */
+@media (prefers-reduced-motion: reduce) {
+    #logo {
+        animation: none; /* Disable animation for accessibility */
+    }
+}
+
+/* === PRINT MODE STYLES === */
+
+@media print {
+    /* Change font to Arial for print readability */
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+        background: none; 
+    }
+
+    /* Hide gallery images when printing */
+    .gallery {
+        display: none;
+    }
+
+    /* Apply border and change width for printed cards */
+    .card {
+        border: 2px solid #45ADDD;
+        flex-basis: 325px;
+    }
+}
